@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERMIN - Media Upload</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f4f4f9; }
+        .container { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); }
+        input[type="file"] { margin: 20px 0; }
+        .preview { margin-top: 20px; max-width: 100%; max-height: 300px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>VERMIN Media Upload</h2>
+        <p>Zabi hoto ko bidiyo (Photo/Video Upload):</p>
+        <input type="file" id="mediaInput" accept="image/*,video/*">
+        <br>
+        <div id="previewContainer"></div>
+    </div>
+
+    <script>
+        const mediaInput = document.getElementById('mediaInput');
+        const previewContainer = document.getElementById('previewContainer');
+
+        mediaInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                previewContainer.innerHTML = '';
+                const fileType = file.type;
+                const fileURL = URL.createObjectURL(file);
+
+                if (fileType.startsWith('image/')) {
+                    const img = document.createElement('img');
+                    img.src = fileURL;
+                    img.className = 'preview';
+                    previewContainer.appendChild(img);
+                } else if (fileType.startsWith('video/')) {
+                    const video = document.createElement('video');
+                    video.src = fileURL;
+                    video.controls = true;
+                    video.className = 'preview';
+                    previewContainer.appendChild(video);
+                }
+            }
+        });
+    
+    </script>
+</body>
+</html>
