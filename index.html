@@ -3,52 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERMIN - Media Upload</title>
+    <title>VERMIN - Secure Cloud, Filters & Career Hub</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f4f4f9; }
-        .container { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); }
-        input[type="file"] { margin: 20px 0; }
-        .preview { margin-top: 20px; max-width: 100%; max-height: 300px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        h1 { text-align: center; color: #1e293b; font-size: 26px; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #64748b; font-size: 14px; margin-bottom: 25px; }
+        .section-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 18px; border-radius: 10px; margin-bottom: 15px; }
+        details { background: #fff; padding: 12px 18px; border-radius: 8px; border: 1px solid #cbd5e1; margin-bottom: 15px; }
+        summary { font-weight: 600; cursor: pointer; color: #2563eb; font-size: 15px; outline: none; }
+        .btn-primary { display: block; width: 100%; text-align: center; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; padding: 14px; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: 600; margin-top: 15px; box-sizing: border-box; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
+        .btn-accent { display: block; width: 100%; text-align: center; background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 14px; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: 600; margin-top: 10px; box-sizing: border-box; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
+        input[type="file"], select { width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 15px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; box-sizing: border-box; }
+        #previewContainer { text-align: center; margin-top: 15px; }
+        #previewContainer img, #previewContainer video { max-width: 100%; border-radius: 8px; max-height: 250px; transition: 0.3s; }
+        
+        /* TikTok Style Filters */
+        .filter-normal { filter: none; }
+        .filter-bw { filter: grayscale(100%); }
+        .filter-sepia { filter: sepia(100%); }
+        .filter-vintage { filter: contrast(120%) brightness(90%) sepia(40%); }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>VERMIN Media Upload</h2>
-        <p>Zabi hoto ko bidiyo (Photo/Video Upload):</p>
+
+<div class="container">
+    <h1>VERMIN Hub</h1>
+    <p class="subtitle">Your secure private iCloud storage, TikTok filter studio, and professional career portal.</p>
+
+    <!-- Cloud Storage & Account Security Section -->
+    <details open>
+        <summary>☁️ Secure Private Cloud & Account Protection</summary>
+        <p style="font-size: 13px; color: #475569; margin-top: 10px; line-height: 1.5;">
+            Every user account is fully encrypted and protected against unauthorized access. Your personal cloud storage works like iCloud to keep files safe. Only you and the primary administrator hold moderation privileges to review and remove unapproved uploads.
+        </p>
+    </details>
+
+    <!-- Media Uploader with TikTok-style Filters -->
+    <div class="section-box">
+        <h3 style="margin-top:0; color: #1e293b; font-size: 16px;">Media Uploader & Filter Studio</h3>
+        <p style="font-size: 13px; color: #64748b; margin-bottom: 10px;">Select your media, apply custom TikTok-style filters, and save to your secure cloud.</p>
+        
         <input type="file" id="mediaInput" accept="image/*,video/*">
-        <br>
+
+        <label for="filterSelect" style="font-size: 13px; font-weight: 600; color: #333;">Choose TikTok-Style Filter:</label>
+        <select id="filterSelect">
+            <option value="filter-normal">Normal (Original)</option>
+            <option value="filter-bw">Black & White (Monochrome)</option>
+            <option value="filter-sepia">Sepia (Classic Vintage)</option>
+            <option value="filter-vintage">Cinematic Film</option>
+        </select>
+
         <div id="previewContainer"></div>
     </div>
 
-    <script>
-        const mediaInput = document.getElementById('mediaInput');
-        const previewContainer = document.getElementById('previewContainer');
+    <!-- Professional Career & Rewards Portals -->
+    <a href="https://gleeful-chebakia-235b28.netlify.app/" target="_blank" class="btn-primary">💼 Explore Career & Opportunity Portal</a>
+    
+    <a href="#" onclick="alert('Exclusive rewards, loyalty bonuses, and cloud sync features are active!'); return false;" class="btn-accent">🎁 Claim Special Rewards & Cloud Sync</a>
+</div>
 
-        mediaInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                previewContainer.innerHTML = '';
-                const fileType = file.type;
-                const fileURL = URL.createObjectURL(file);
+<script>
+    const mediaInput = document.getElementById('mediaInput');
+    const previewContainer = document.getElementById('previewContainer');
+    const filterSelect = document.getElementById('filterSelect');
+    let activeMedia = null;
 
-                if (fileType.startsWith('image/')) {
-                    const img = document.createElement('img');
-                    img.src = fileURL;
-                    img.className = 'preview';
-                    previewContainer.appendChild(img);
-                } else if (fileType.startsWith('video/')) {
-                    const video = document.createElement('video');
-                    video.src = fileURL;
-                    video.controls = true;
-                    video.className = 'preview';
-                    previewContainer.appendChild(video);
-                }
-            }
-        });
-  video);
-                }
-            }
-        });
-    A </script><div style="text-align: center; margin-top: 30px;"><a href="https://gleeful-chebakia-235b28.netlify.app/" target="_blank" style="padding: 12px 25px; background: #007bff; color: white; text-decoration: none; border-radius: 8px; font-size: 16px;">Jeka Shafin Neman Arziki, Aiki</a></div></body></html>
+    mediaInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        previewContainer.innerHTML = '';
+        const fileURL = URL.createObjectURL(file);
+        const fileType = file.type;
+
+        if (fileType.startsWith('image/')) {
+            activeMedia = document.createElement('img');
+            activeMedia.src = fileURL;
+            previewContainer.appendChild(activeMedia);
+        } else if (fileType.startsWith('video/')) {
+            activeMedia = document.createElement('video');
+            activeMedia.src = fileURL;
+            activeMedia.controls = true;
+            previewContainer.appendChild(activeMedia);
+        }
+        applyFilter();
+    });
+
+    filterSelect.addEventListener('change', function() {
+        applyFilter();
+    });
+
+    function applyFilter() {
+        if (!activeMedia) return;
+        activeMedia.className = filterSelect.value;
+    }
+</script>
+
+</body>
+</html>
+
  
     
