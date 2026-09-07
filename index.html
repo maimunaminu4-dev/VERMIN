@@ -1,11 +1,10 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERMIN - Ultimate Global Ecosystem & Social Hub</title>
+    <title>VERMIN (VeriMind) - Ultimate Global Ecosystem & Social Hub</title>
     
-    <!-- Standard PWA Manifest Link -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1877f2">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,6 +32,52 @@ DOCTYPE html>
             scroll-behavior: smooth;
         }
 
+        /* TikTok-Style Splash Screen */
+        #splashScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f172a, #1e293b, #4338ca);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        .splash-logo {
+            font-size: 48px;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .splash-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            margin-top: 25px;
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .splash-btn:hover {
+            transform: scale(1.05);
+        }
+
         /* Top Sponsored Banner */
         .top-ads-banner {
             background: linear-gradient(90deg, #ff416c, #ff4b2b);
@@ -47,7 +92,7 @@ DOCTYPE html>
             z-index: 1001;
         }
 
-        /* Header Navigation & Headings Menu */
+        /* Header Navigation */
         header {
             background: var(--card-bg);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -66,30 +111,88 @@ DOCTYPE html>
             background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
             display: flex;
-            gap: 10px;
-            overflow-x: auto;
-            padding-bottom: 5px;
+            align-items: center;
+            gap: 8px;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text-secondary);
+        .menu-toggle-btn {
             background: #e4e6eb;
-            padding: 6px 12px;
-            border-radius: 20px;
-            white-space: nowrap;
-            transition: all 0.2s ease;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 14px;
         }
 
-        .nav-links a:hover {
+        /* Sidebar Drawer */
+        .sidebar-drawer {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 280px;
+            height: 100%;
+            background: var(--card-bg);
+            box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .sidebar-drawer.open {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .sidebar-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .sidebar-nav-item {
+            display: block;
+            padding: 12px 15px;
+            margin-bottom: 8px;
+            background: #f8fafc;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .sidebar-nav-item:hover {
             background: var(--primary-blue);
             color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
         }
 
         .app-container {
@@ -115,7 +218,6 @@ DOCTYPE html>
             color: #1c1e21;
         }
 
-        /* Hero Section */
         .priority-hero {
             background: linear-gradient(135deg, #0f172a, #1e293b);
             color: #fff;
@@ -136,7 +238,39 @@ DOCTYPE html>
             line-height: 1.5;
         }
 
-        /* Account & Registration Form */
+        .hub-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .hub-tab-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 10px 5px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .hub-tab-btn.active, .hub-tab-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .hub-section-view {
+            display: none;
+        }
+
+        .hub-section-view.active {
+            display: block;
+        }
+
         .auth-box input, .auth-box textarea {
             width: 100%;
             padding: 10px;
@@ -147,7 +281,6 @@ DOCTYPE html>
             font-size: 14px;
         }
 
-        /* Wallet & Earnings Dashboard Box */
         .wallet-box {
             background: linear-gradient(135deg, #ecfdf5, #d1fae5);
             border: 1px solid #a7f3d0;
@@ -162,7 +295,6 @@ DOCTYPE html>
             margin: 5px 0 10px 0;
         }
 
-        /* Media Upload & Filters Studio */
         .upload-area {
             border: 2px dashed #dadde1;
             padding: 20px;
@@ -192,7 +324,7 @@ DOCTYPE html>
             background: #000;
             border-radius: 8px;
             overflow: hidden;
-            min-height: 140px;
+            min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -201,25 +333,19 @@ DOCTYPE html>
 
         .preview-container img, .preview-container video {
             max-width: 100%;
-            max-height: 350px;
+            max-height: 400px;
             display: block;
             margin: 0 auto;
             width: 100%;
             object-fit: cover;
         }
 
-        /* Advanced Bandariya & Classic Filters Collection */
         .filter-normal { filter: none; }
-        .filter-hollywood { filter: contrast(125%) brightness(105%) saturate(130%) drop-shadow(0 0 8px rgba(255,215,0,0.4)); }
+        .filter-snapchat-glow { filter: contrast(120%) brightness(110%) saturate(140%) drop-shadow(0 0 10px rgba(255,255,0,0.5)); }
+        .filter-hollywood { filter: contrast(125%) brightness(105%) saturate(130%); }
         .filter-cyberpunk { filter: hue-rotate(310deg) saturate(250%) contrast(140%) brightness(110%); }
-        .filter-gold-luxury { filter: sepia(40%) contrast(130%) brightness(115%) saturate(150%); }
-        .filter-moody-cinematic { filter: contrast(140%) brightness(85%) saturate(90%) sepia(20%); }
         .filter-classic-bw { filter: grayscale(100%) contrast(135%) brightness(105%); }
-        .filter-vintage-sepia { filter: sepia(90%) contrast(120%) brightness(95%); }
-        .filter-funny-swirl { filter: hue-rotate(240deg) saturate(350%) contrast(160%); }
-        .filter-meme-deepfry { filter: contrast(350%) saturate(450%) brightness(85%); }
 
-        /* Gifting Grid System */
         .gift-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -257,13 +383,6 @@ DOCTYPE html>
             cursor: pointer;
         }
 
-        .admin-panel {
-            background: #fff5f5;
-            border: 1px dashed var(--admin-red);
-            padding: 15px;
-            border-radius: 8px;
-        }
-
         footer {
             text-align: center;
             font-size: 12px;
@@ -274,127 +393,182 @@ DOCTYPE html>
 </head>
 <body>
 
+    <!-- TikTok-Style Splash Entrance Screen -->
+    <div id="splashScreen">
+        <div class="splash-logo">VERMIN</div>
+        <p style="font-size: 15px; max-width: 400px; color: #cbd5e1; margin: 10px 20px;">
+            The Ultimate Global Ecosystem. Connect, share videos, earn cash straight to OPay, and verify absolute truth.
+        </p>
+        <button class="splash-btn" onclick="enterApp()">Enter VERMIN App 🚀</button>
+    </div>
+
     <!-- Top Sponsored Ad Banner -->
-    <div class="top-ads-banner" onclick="alert('Sponsored Ad Partner Portal: Platform ad revenue supports global creator cashout payouts!');">
+    <div class="top-ads-banner" onclick="alert('Sponsored Ad Partner Portal: Platform ad revenue directly funds creator cashouts!');">
         🚀 Sponsored Ads Banner: Click to explore global monetization partners!
     </div>
 
     <!-- Main Navigation Header -->
     <header>
-        <div class="logo-area">VERMIN</div>
-        <div class="nav-links">
-            <a href="#heroSec">🛡️ Security</a>
-            <a href="#authSec">👤 Social</a>
-            <a href="#cameraSec">📸 Pro Filters & Live</a>
-            <a href="#giftSec">🎁 Wallet & Gifts</a>
-            <a href="#adminSec">⚙️ Admin</a>
+        <div class="logo-area">
+            <button class="menu-toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+            VERMIN
         </div>
+        <div style="font-size: 12px; font-weight: 600; color: var(--text-secondary);">VeriMind Ecosystem</div>
     </header>
+
+    <!-- Sidebar Drawer -->
+    <div class="overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar-drawer" id="sidebarDrawer">
+        <div class="sidebar-header">
+            <h3 style="margin:0; font-size:16px;">📂 VERMIN Hubs</h3>
+            <button class="sidebar-close" onclick="toggleSidebar()">×</button>
+        </div>
+        <a href="#heroSec" class="sidebar-nav-item" onclick="toggleSidebar()">🛡️ Truth & Security Hub</a>
+        <a href="#authSec" class="sidebar-nav-item" onclick="toggleSidebar()">👤 Global Account Registration</a>
+        <a href="#toroSec" class="sidebar-nav-item" onclick="toggleSidebar()">🔥 Toro (TikTok Feed)</a>
+        <a href="#snapSec" class="sidebar-nav-item" onclick="toggleSidebar()">📸 Snapchat Pro Studio</a>
+        <a href="#fbSec" class="sidebar-nav-item" onclick="toggleSidebar()">👥 Facebook Social Community</a>
+        <a href="#giftSec" class="sidebar-nav-item" onclick="toggleSidebar()">🎁 OPay Wallet & Creator Gifts</a>
+        <a href="#adminSec" class="sidebar-nav-item" onclick="toggleSidebar()">⚙️ Admin Security Console</a>
+    </div>
 
     <div class="app-container">
 
-        <!-- 1. Security & Global Ecosystem Hub Section -->
+        <!-- Hero Section -->
         <div class="priority-hero" id="heroSec">
-            <h1>🛡️ VERMIN Global Ecosystem & Security Hub</h1>
-            <p>Designed for worldwide deployment, featuring absolute security protocols, youth empowerment, and high-end multimedia broadcasting tools.</p>
-        </div>
-
-        <!-- 2. Social Account Registration Section -->
-        <div class="card" id="authSec">
-            <h2>👤 TikTok & Instagram Style Global Account Registration</h2>
-            <div class="auth-box">
-                <p style="font-size: 13px; color: var(--text-secondary);">Create your global profile, secure password, and bio:</p>
-                <input type="text" id="fullNameInput" placeholder="Enter Full Name...">
-                <input type="text" id="usernameInput" placeholder="Enter Username (e.g., @vermin_global)...">
-                <input type="password" id="passwordInput" placeholder="Enter Secure Password...">
-                <textarea id="bioInput" rows="2" placeholder="Write a short bio about yourself..."></textarea>
-                <button onclick="registerAccount()" class="btn-action">Create Global Social Account & Sign In ✨</button>
-            </div>
-        </div>
-
-        <!-- 3. Advanced Bandariya & Classic Filters + Live Camera Studio Section -->
-        <div class="card" id="cameraSec">
-            <h2>📸 Advanced Bandariya & Classic Studio Filters + Live Camera</h2>
-            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px;">
-                Choose from our massive collection of high-end bandariya, cinematic, classic, and comedy filters for your uploads or real-time live video streams!
+            <h1>Truth, Connection, Security & Technology — All Inside One App.</h1>
+            <p>
+                Designed for absolute security, combating loneliness, empowering youth worldwide, and letting creators earn money directly to their OPay accounts with total administrative control.
             </p>
+        </div>
 
+        <!-- Global Account Registration & Password Protection Card -->
+        <div class="card" id="authSec">
+            <h2>👤 TikTok & Instagram Style Global Account & Password Security</h2>
+            <p style="font-size: 13px; color: var(--text-secondary);">Create your secure profile with a personal password so only you can control your account, post videos, and manage your earnings.</p>
+            <div class="auth-box">
+                <input type="text" id="regFullName" placeholder="Enter Full Name...">
+                <input type="text" id="regUsername" placeholder="Enter Username (e.g., @vermin_creator)...">
+                <input type="password" id="regPassword" placeholder="Enter Secure Password (Only you can access)...">
+                <textarea id="regBio" rows="2" placeholder="Write a short bio about yourself..."></textarea>
+                <button onclick="registerAccount()" class="btn-action">Create Secure Account & Login 🔒</button>
+            </div>
+        </div>
+
+        <!-- Platform Hub Selection Tabs -->
+        <div class="hub-tabs">
+            <button class="hub-tab-btn active" onclick="switchHub('toro')">🔥 Toro</button>
+            <button class="hub-tab-btn" onclick="switchHub('snap')">📸 Snapchat</button>
+            <button class="hub-tab-btn" onclick="switchHub('fb')">👥 Facebook</button>
+            <button class="hub-tab-btn" onclick="switchHub('truth')">🛡️ Truth Hub</button>
+        </div>
+
+        <!-- 1. TORO SECTION -->
+        <div id="toroHub" class="hub-section-view active card">
+            <h2>🔥 Toro: Immersive Video Feed & Live Stream</h2>
+            <p style="font-size: 13px; color: var(--text-secondary);">Upload videos, share clips with the world, and receive gifts from supporters.</p>
+            
             <div class="upload-area" onclick="document.getElementById('mediaInput').click();">
-                <span style="font-size: 30px; display: block; margin-bottom: 5px;">📂</span>
-                <span class="upload-btn-label">Select Photo or Video File</span>
-                <input type="file" id="mediaInput" accept="image/*,video/*">
+                <span style="font-size: 30px; display: block; margin-bottom: 5px;">📤</span>
+                <span class="upload-btn-label">Upload Toro Video or Photo</span>
             </div>
 
-            <div style="margin-bottom: 15px;">
-                <label for="filterSelect" style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px;">Choose Bandariya / Classic Filter Effect:</label>
-                <select id="filterSelect" style="width:100%; padding:10px; border-radius:6px; border:1px solid var(--border-color); font-weight: 600; color: #1e293b;">
-                    <option value="filter-normal">Normal (Original Media)</option>
-                    <option value="filter-hollywood">🌟 Hollywood Cinematic Bandariya</option>
-                    <option value="filter-cyberpunk">⚡ Cyberpunk Neon Glow</option>
-                    <option value="filter-gold-luxury">👑 Gold Luxury High-Class</option>
-                    <option value="filter-moody-cinematic">🎬 Moody Cinematic Pro</option>
-                    <option value="filter-classic-bw">🎞️ Classic High-Contrast B&W</option>
-                    <option value="filter-vintage-sepia">📜 Vintage Retro Sepia</option>
-                    <option value="filter-funny-swirl">🤪 Funny Neon Swirl Comedy</option>
-                    <option value="filter-meme-deepfry">🔥 Meme Deep-Fried Effect</option>
-                </select>
+            <div class="preview-container" id="toroPreview">
+                <span style="color: #888; font-size: 13px;">Toro video feed & live broadcast stream active here</span>
             </div>
 
-            <div class="preview-container" id="previewContainer">
-                <span style="color: #888; font-size: 13px;">Media preview and real-time live hardware camera stream will render here</span>
-            </div>
-
-            <button onclick="startRealLiveVideo()" class="btn-action" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); margin-top: 15px;">
-                🔴 Start Real Live Hardware Camera Stream 🎥
+            <button onclick="startRealLiveVideo('toroPreview')" class="btn-action" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">
+                🔴 Go Live on Toro
             </button>
         </div>
 
-        <!-- 4. TikTok-Style Gifting & Cash Wallet Section -->
-        <div class="card" id="giftSec">
-            <h2>🎁 TikTok-Style Live Gifting & Cash Wallet</h2>
-            
-            <!-- Wallet Balance Display -->
-            <div class="wallet-box">
-                <div style="font-size: 12px; font-weight: 700; color: #065f46; text-transform: uppercase;">💰 Global Creator Cash Earnings Wallet</div>
-                <div class="wallet-balance" id="walletDisplay">$0.00 (₦0.00)</div>
-                <p style="font-size: 12px; color: #047857; margin: 0 0 10px 0;">
-                    Virtual gifts sent during live broadcasts instantly convert to real currency backed by platform treasury funds!
-                </p>
-                <button onclick="requestPayout()" style="background: #10b981; color: white; border: none; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer;">
-                    💸 Withdraw Earnings & Cashout
-                </button>
+        <!-- 2. SNAPCHAT SECTION -->
+        <div id="snapHub" class="hub-section-view card">
+            <h2>📸 Snapchat Style High-End Pro Studio</h2>
+            <p style="font-size: 13px; color: var(--text-secondary);">Apply high-end filters, snap photos, and record pro videos effortlessly.</p>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px;">Choose Snapchat Pro Filter:</label>
+                <select id="snapFilterSelect" onchange="applySnapFilter()" style="width:100%; padding:10px; border-radius:6px; border:1px solid var(--border-color); font-weight: 600;">
+                    <option value="filter-normal">Normal (Original Snap)</option>
+                    <option value="filter-snapchat-glow">✨ Snapchat Gold Glow</option>
+                    <option value="filter-hollywood">🌟 Hollywood Cinematic</option>
+                    <option value="filter-cyberpunk">⚡ Cyberpunk Neon</option>
+                    <option value="filter-classic-bw">🎞️ Classic High-Contrast B&W</option>
+                </select>
             </div>
 
-            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">Tap a gift to test sending and watch your wallet cash grow globally:</p>
-            <div class="gift-grid">
-                <div class="gift-item" onclick="triggerGift('🌹 Rose', 0.50, 400)">
-                    <span class="gift-emoji">🌹</span>
-                    <span class="gift-name">Rose ($0.50)</span>
-                </div>
-                <div class="gift-item" onclick="triggerGift('💎 Diamond', 2.00, 1600)">
-                    <span class="gift-emoji">💎</span>
-                    <span class="gift-name">Diamond ($2.00)</span>
-                </div>
-                <div class="gift-item" onclick="triggerGift('🚀 Rocket', 5.00, 4000)">
-                    <span class="gift-emoji">🚀</span>
-                    <span class="gift-name">Rocket ($5.00)</span>
-                </div>
-                <div class="gift-item" onclick="triggerGift('👑 Trophy', 10.00, 8000)">
-                    <span class="gift-emoji">👑</span>
-                    <span class="gift-name">Trophy ($10.00)</span>
+            <div class="preview-container" id="snapPreview">
+                <span style="color: #888; font-size: 13px;">Snap camera view and lenses render here</span>
+            </div>
+
+            <button onclick="startRealLiveVideo('snapPreview')" class="btn-action" style="background: #facc15; color: #000; font-weight: 900;">
+                📸 Snap Photo / Record Video
+            </button>
+        </div>
+
+        <!-- 3. FACEBOOK SECTION -->
+        <div id="fbHub" class="hub-section-view card">
+            <h2>👥 Facebook Community & Social Feed</h2>
+            <p style="font-size: 13px; color: var(--text-secondary);">Connect with friends, share thoughts, combat loneliness, and build human empathy networks.</p>
+            
+            <div class="auth-box">
+                <textarea id="fbPostInput" rows="3" placeholder="What's on your mind? Share truth and connect with the world..."></textarea>
+                <button onclick="publishFBPost()" class="btn-action" style="background: var(--primary-blue);">Post to Community Feed 💬</button>
+            </div>
+
+            <div id="fbFeedContainer" style="margin-top: 15px;">
+                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 13px;">
+                    <strong>@vermin_global</strong> 🛡️<br>
+                    Welcome to the global ecosystem! Let's eliminate loneliness together through real human connections and truth verification.
                 </div>
             </div>
         </div>
 
-        <!-- 5. Admin Control & Moderation Panel Section -->
-        <div class="card" id="adminSec">
-            <h2>⚙️ Admin Central Security & Global Treasury</h2>
-            <p style="font-size: 13px; color: var(--text-secondary);">Manage global user accounts, moderate violations, and approve treasury payouts:</p>
-            <div class="admin-panel">
-                <input type="text" id="targetUser" placeholder="Enter target Username or User ID..." style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-                <button onclick="adminAction()" style="background:var(--admin-red); color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; margin-bottom: 10px;">🗑️ Remove User Account or Content</button>
-                <button onclick="adminApprovePayouts()" style="background:var(--success-green); color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer;">✅ Global Treasury: Approve Creator Payouts</button>
+        <!-- 4. TRUTH & SECURITY HUB -->
+        <div id="truthHub" class="hub-section-view card">
+            <h2>🛡️ The Truth & Security Ecosystem</h2>
+            <p style="font-size: 13px; color: var(--text-secondary);">
+                VERMIN is built with absolute security protocols. Nobody can steal your account, hack your profile, or sell it without your master password authorization.
+            </p>
+            <ul style="font-size: 13px; color: var(--text-secondary); line-height: 1.6; padding-left: 20px;">
+                <li><strong>Exclusive Ownership:</strong> Protected by your personal password lock.</li>
+                <li><strong>Truth Verification:</strong> Human verifiers confirm real broadcasts vs fake news.</li>
+                <li><strong>Direct OPay Integration:</strong> Earnings are securely routed straight to your account.</li>
+            </ul>
+        </div>
+
+        <!-- Global File Input Handler -->
+        <input type="file" id="mediaInput" accept="image/*,video/*" onchange="handleFileSelect(event)">
+
+        <!-- OPay Wallet & Creator Gifts Card -->
+        <div class="card" id="giftSec">
+            <h2>🎁 TikTok-Style Live Gifting & Direct OPay Payout</h2>
+            <div class="wallet-box">
+                <div style="font-size: 12px; font-weight: 700; color: #065f46; text-transform: uppercase;">💰 Creator Earnings Wallet</div>
+                <div class="wallet-balance" id="walletDisplay">$0.00 (₦0.00)</div>
+                <p style="font-size: 12px; color: #047857; margin: 0 0 10px 0;">
+                    Linked OPay Account: <strong>9115863291</strong> (Maimuna Aminu)
+                </p>
+                <button onclick="requestOPayPayout()" style="background: #10b981; color: white; border: none; padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; width: 100%;">
+                    💸 Withdraw Earnings Direct to OPay
+                </button>
             </div>
+            <div class="gift-grid">
+                <div class="gift-item" onclick="triggerGift('🌹 Rose', 0.50, 400)"><span class="gift-emoji">🌹</span><span class="gift-name">Rose ($0.50)</span></div>
+                <div class="gift-item" onclick="triggerGift('💎 Diamond', 2.00, 1600)"><span class="gift-emoji">💎</span><span class="gift-name">Diamond ($2.00)</span></div>
+                <div class="gift-item" onclick="triggerGift('🚀 Rocket', 5.00, 4000)"><span class="gift-emoji">🚀</span><span class="gift-name">Rocket ($5.00)</span></div>
+                <div class="gift-item" onclick="triggerGift('👑 Trophy', 10.00, 8000)"><span class="gift-emoji">👑</span><span class="gift-name">Trophy ($10.00)</span></div>
+            </div>
+        </div>
+
+        <!-- Admin Control & Moderation Panel -->
+        <div class="card" id="adminSec">
+            <h2>⚙️ Master Admin Security & Moderation Console</h2>
+            <p style="font-size: 13px; color: var(--text-secondary);">As the absolute owner, you can remove any user account, delete inappropriate content, or manage system permissions.</p>
+            <input type="text" id="targetUser" placeholder="Enter target Username or User ID..." style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+            <button onclick="adminActionRemove()" style="background:var(--admin-red); color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; margin-bottom: 10px;">🗑️ Remove User Account or Content</button>
+            <button onclick="adminApproveTreasury()" style="background:var(--success-green); color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer;">✅ Approve OPay Payout Transfers</button>
         </div>
 
     </div>
@@ -403,70 +577,100 @@ DOCTYPE html>
         &copy; 2026 VERMIN Global Ecosystem. All rights reserved. Worldwide Standard PWA Powered.
     </footer>
 
-    <!-- Integrated JavaScript Engine -->
+    <!-- JavaScript Engine -->
     <script>
-        const mediaInput = document.getElementById('mediaInput');
-        const previewContainer = document.getElementById('previewContainer');
-        const filterSelect = document.getElementById('filterSelect');
-        let activeMedia = null;
         let activeStream = null;
-
         let totalUSD = 0.00;
         let totalNGN = 0.00;
+        let currentUserProfile = null;
 
-        function updateWalletDisplay() {
-            document.getElementById('walletDisplay').innerText = `$${totalUSD.toFixed(2)} (₦${totalNGN.toLocaleString()})`;
+        function enterApp() {
+            const splash = document.getElementById('splashScreen');
+            splash.style.opacity = '0';
+            setTimeout(() => {
+                splash.style.display = 'none';
+            }, 500);
         }
 
-        mediaInput.addEventListener('change', function(event) {
-            stopCameraStream();
+        function toggleSidebar() {
+            document.getElementById('sidebarDrawer').classList.toggle('open');
+            document.getElementById('sidebarOverlay').classList.toggle('active');
+        }
+
+        function switchHub(hubName) {
+            document.querySelectorAll('.hub-section-view').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.hub-tab-btn').forEach(el => el.classList.remove('active'));
+
+            if(hubName === 'toro') {
+                document.getElementById('toroHub').classList.add('active');
+                event.target.classList.add('active');
+            } else if(hubName === 'snap') {
+                document.getElementById('snapHub').classList.add('active');
+                event.target.classList.add('active');
+            } else if(hubName === 'fb') {
+                document.getElementById('fbHub').classList.add('active');
+                event.target.classList.add('active');
+            } else if(hubName === 'truth') {
+                document.getElementById('truthHub').classList.add('active');
+                event.target.classList.add('active');
+            }
+        }
+
+        function registerAccount() {
+            const name = document.getElementById('regFullName').value;
+            const username = document.getElementById('regUsername').value;
+            const pass = document.getElementById('regPassword').value;
+            
+            if(!name || !username || !pass) {
+                alert('Please fill in your name, username, and secure password to protect your account.');
+                return;
+            }
+
+            currentUserProfile = { name, username, pass };
+            alert(`Account created successfully for ${username}! Your password is secure. Nobody can access or steal your account without your password.`);
+        }
+
+        function handleFileSelect(event) {
             const file = event.target.files[0];
             if (!file) return;
-
-            previewContainer.innerHTML = '';
             const fileURL = URL.createObjectURL(file);
-            const fileType = file.type;
-
-            if (fileType.startsWith('image/')) {
-                activeMedia = document.createElement('img');
-                activeMedia.src = fileURL;
-                previewContainer.appendChild(activeMedia);
-            } else if (fileType.startsWith('video/')) {
-                activeMedia = document.createElement('video');
-                activeMedia.src = fileURL;
-                activeMedia.controls = true;
-                previewContainer.appendChild(activeMedia);
+            const activePreview = document.getElementById('toroHub').classList.contains('active') ? document.getElementById('toroPreview') : document.getElementById('snapPreview');
+            
+            activePreview.innerHTML = '';
+            let mediaElement;
+            if (file.type.startsWith('image/')) {
+                mediaElement = document.createElement('img');
+                mediaElement.src = fileURL;
+            } else {
+                mediaElement = document.createElement('video');
+                mediaElement.src = fileURL;
+                mediaElement.controls = true;
             }
-            applySelectedFilter();
-        });
+            activePreview.appendChild(mediaElement);
+        }
 
-        filterSelect.addEventListener('change', applySelectedFilter);
-
-        function applySelectedFilter() {
-            if (!activeMedia) return;
-            const selectedFilter = filterSelect.value;
-            activeMedia.className = '';
-            if (selectedFilter !== 'filter-normal') {
-                activeMedia.classList.add(selectedFilter);
+        function applySnapFilter() {
+            const selectedFilter = document.getElementById('snapFilterSelect').value;
+            const previewImg = document.querySelector('#snapPreview img, #snapPreview video');
+            if (previewImg) {
+                previewImg.className = selectedFilter;
             }
         }
 
-        async function startRealLiveVideo() {
+        async function startRealLiveVideo(containerId) {
             stopCameraStream();
-            previewContainer.innerHTML = '';
-            
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
             try {
                 activeStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-                activeMedia = document.createElement('video');
-                activeMedia.srcObject = activeStream;
-                activeMedia.autoplay = true;
-                activeMedia.playsInline = true;
-                previewContainer.appendChild(activeMedia);
-                
-                applySelectedFilter();
-                alert('🔴 Live Video Camera Stream Successfully Started Worldwide! Hardware camera is active.');
-            } catch (error) {
-                alert('⚠️ Camera access denied or not supported on this device/browser. Please check permissions.');
+                const videoEl = document.createElement('video');
+                videoEl.srcObject = activeStream;
+                videoEl.autoplay = true;
+                videoEl.playsInline = true;
+                container.appendChild(videoEl);
+                alert('🔴 Live camera stream activated successfully!');
+            } catch (err) {
+                alert('⚠️ Camera access denied or not supported on this device/browser.');
             }
         }
 
@@ -477,49 +681,40 @@ DOCTYPE html>
             }
         }
 
-        function registerAccount() {
-            const fullName = document.getElementById('fullNameInput').value;
-            const user = document.getElementById('usernameInput').value;
-            const pass = document.getElementById('passwordInput').value;
-            if(!fullName || !user || !pass) {
-                alert('Please fill in your Full Name, Username, and Password to create your account!');
-                return;
-            }
-            alert(`🎉 Welcome to VERMIN Global Ecosystem, ${fullName} (${user})! Your global account and cash wallet are active.`);
+        function publishFBPost() {
+            const text = document.getElementById('fbPostInput').value;
+            if(!text) return alert('Please type something to share.');
+            const feed = document.getElementById('fbFeedContainer');
+            const author = currentUserProfile ? currentUserProfile.username : 'You';
+            feed.innerHTML = `<div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 13px; margin-bottom: 10px;"><strong>${author}</strong> 👤<br>${text}</div>` + feed.innerHTML;
+            document.getElementById('fbPostInput').value = '';
+            alert('Posted successfully to the VERMIN Facebook community feed!');
+        }
+
+        function updateWalletDisplay() {
+            document.getElementById('walletDisplay').innerText = `$${totalUSD.toFixed(2)} (₦${totalNGN.toLocaleString()})`;
         }
 
         function triggerGift(giftName, usdValue, ngnValue) {
             totalUSD += usdValue;
             totalNGN += ngnValue;
             updateWalletDisplay();
-            alert(`🎁 Success! You received a ${giftName}! Converted to your global cash wallet ($${usdValue.toFixed(2)} / ₦${ngnValue.toLocaleString()}).`);
+            alert(`🎁 Success! You received a ${giftName} ($${usdValue.toFixed(2)} / ₦${ngnValue.toLocaleString()}) added to your wallet.`);
         }
 
-        function requestPayout() {
-            if (totalUSD <= 0) {
-                alert('⚠️ Your wallet balance is $0.00. Receive virtual gifts during live streams to accumulate earnings!');
-                return;
-            }
-            alert(`💸 Global Payout Request Submitted Successfully!\n\nWithdrawal request for $${totalUSD.toFixed(2)} (₦${totalNGN.toLocaleString()}) is queued for worldwide bank transfer via VERMIN Treasury.`);
+        function requestOPayPayout() {
+            if (totalUSD <= 0) return alert('⚠️ Wallet balance is $0.00.');
+            alert(`💸 Payout request for $${totalUSD.toFixed(2)} successfully sent to your OPay account (9115863291 - Maimuna Aminu)!`);
         }
 
-        function adminAction() {
+        function adminActionRemove() {
             const target = document.getElementById('targetUser').value;
-            if(!target) {
-                alert('Please provide a valid username or ID to execute global moderation.');
-                return;
-            }
-            alert(`🛡️ Admin Action Confirmed: Target (${target}) has been successfully removed from VERMIN Global.`);
+            if(!target) return alert('Enter a target username or ID.');
+            alert(`🛡️ Master Admin: Target (${target}) successfully removed from the ecosystem.`);
         }
 
-        function adminApprovePayouts() {
-            alert(`✅ Global Treasury Confirmed: All pending creator payouts have been successfully approved and disbursed worldwide!`);
-        }
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration failed', err));
-            });
+        function adminApproveTreasury() {
+            alert('✅ Global Treasury: OPay payouts approved and transferred successfully to creator accounts!');
         }
     </script>
 </body>
