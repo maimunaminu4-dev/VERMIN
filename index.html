@@ -1,360 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERMIN - The Ultimate Global Social & Cloud Ecosystem</title>
-    <style>
-        :root {
-            --primary-blue: #1877f2;
-            --primary-gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
-            --bg-color: #f0f2f5;
-            --card-bg: #ffffff;
-            --text-main: #050505;
-            --text-secondary: #65676b;
-            --border-color: #ced0d4;
-        }
-
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Header Navigation */
-        header {
-            background: var(--card-bg);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 20px;
-        }
-
-        .logo-area {
-            font-size: 26px;
-            font-weight: 900;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-search {
-            background: #f0f2f5;
-            border-radius: 50px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            width: 280px;
-            border: 1px solid transparent;
-            transition: 0.3s;
-        }
-
-        .nav-search:focus-within {
-            border-color: var(--primary-blue);
-            background: #fff;
-        }
-
-        .nav-search input {
-            border: none;
-            background: transparent;
-            outline: none;
-            width: 100%;
-            font-size: 14px;
-            margin-left: 8px;
-        }
-
-        /* Main Container */
-        .app-container {
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-
-        /* Explicit User Guidance Banner */
-        .instruction-banner {
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            color: #fff;
-            padding: 22px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .instruction-banner h3 {
-            margin-top: 0;
-            color: #fbbf24;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .instruction-banner p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: #e2e8f0;
-            margin-bottom: 0;
-        }
-
-        /* Card Section Design */
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #f0f2f5;
-            padding-bottom: 10px;
-        }
-
-        .card-header h2 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #1c1e21;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* iCloud Private Storage Box */
-        .icloud-box {
-            background: #e7f3ff;
-            border-left: 4px solid var(--primary-blue);
-            padding: 12px 15px;
-            border-radius: 6px;
-            font-size: 13px;
-            color: #050505;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-
-        /* Media Upload & Studio */
-        .upload-area {
-            border: 2px dashed #dadde1;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            background: #fdfdfd;
-            cursor: pointer;
-            transition: 0.2s;
-            margin-bottom: 15px;
-        }
-
-        .upload-area:hover {
-            background: #f4f6f8;
-            border-color: var(--primary-blue);
-        }
-
-        input[type="file"] {
-            display: none;
-        }
-
-        .upload-btn-label {
-            background: var(--primary-blue);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 14px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .filter-select-group {
-            margin-bottom: 15px;
-        }
-
-        .filter-select-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
-        }
-
-        select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            background: #fff;
-            font-size: 14px;
-            outline: none;
-        }
-
-        /* Preview Display */
-        .preview-container {
-            position: relative;
-            text-align: center;
-            margin-top: 15px;
-            background: #000;
-            border-radius: 8px;
-            overflow: hidden;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .preview-container img, .preview-container video {
-            max-width: 100%;
-            max-height: 400px;
-            display: block;
-            margin: 0 auto;
-        }
-
-        /* Rare Classic & Vintage Aesthetic Filters */
-        .filter-rare-classic { filter: sepia(75%) contrast(130%) brightness(90%) hue-rotate(-15deg); }
-        .filter-golden-cinema { filter: sepia(50%) saturate(160%) contrast(120%) brightness(95%); }
-        .filter-noir-film { filter: grayscale(100%) contrast(150%) brightness(90%); }
-        .filter-retro-dream { filter: invert(15%) sepia(80%) saturate(300%) hue-rotate(300deg); }
-
-        /* TikTok Gifting Grid */
-        .gift-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .gift-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            text-align: center;
-            padding: 12px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .gift-item:hover {
-            transform: translateY(-3px);
-            border-color: #ec4899;
-            background: #fdf2f8;
-        }
-
-        .gift-emoji {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .gift-name {
-            font-size: 11px;
-            font-weight: 700;
-            color: #475569;
-        }
-
-        /* Action Buttons */
-        .btn-action {
-            display: block;
-            width: 100%;
-            text-align: center;
-            background: var(--primary-gradient);
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
-            transition: 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-action:hover {
-            opacity: 0.95;
-            transform: translateY(-1px);
-        }
-
-        footer {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin: 30px 0;
-            padding: 20px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header Navigation -->
-    <header>
-        <div class="logo-area">VERMIN</div>
-        <div class="nav-search">
-            <span>🔍</span>
-            <input type="text" id="globalSearch" placeholder="Search VERMIN ecosystem...">
-        </div>
-    </header>
-
-    <div class="app-container">
-
-        <!-- User Guidance & Clarity Banner -->
-        <div class="instruction-banner">
-            <h3>📖 Welcome to VERMIN Central Dashboard</h3>
-            <p>
-                <strong>User Guide & App Overview:</strong> VERMIN is your advanced global social and cloud ecosystem. You can query records using the search bar, securely store files inside the iCloud-grade encrypted private vault, apply high-end rare vintage classic filters to your media uploads, send live virtual TikTok-style gifts, and access career opportunity networks seamlessly from this single page.
-            </p>
-        </div>
-
-        <!-- SECTION 1: Secure iCloud Private Cloud & Search Engine -->
-        <div class="card">
-            <div class="card-header">
-                <h2>☁️ Secure iCloud Private Cloud & Search Engine</h2>
-            </div>
-            <div class="icloud-box">
-                <strong>End-to-End Encryption Active:</strong> Your files and private media logs are safely secured under strict iCloud security protocols. Only you and authorized primary administrators hold moderation and review privileges.
-            </div>
-            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">
-                Filter or locate any stored record instantly through the active index system.
-            </p>
-            <input type="text" id="cloudSearch" placeholder="Type keywords to filter cloud records..." style="width:100%; padding:10px; border:1px solid var(--border-color); border-radius:6px; box-sizing:border-box;">
-        </div>
-
-        <!-- SECTION 2: Media Studio with Rare Classic Filters -->
-        <div class="card">
-            <div class="card-header">
-                <h2>🎨 Elite Media Studio & Rare Vintage Filters</h2>
-            </div>
-            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px;">
-                Upload photos or videos and transform them using our collection of rare, high-end classic aesthetic filters instead of standard modern presets.
-            </p>
-
-            <div class="upload-area" onclick="document.getElementById('mediaInput').click();">
-                <span style="font-size: 32px; display: block; margin-bottom: 8px;">📂</span>
-                <span class="upload-btn-label">Choose Media (Image/Video)</span>
-                <input type="file" id="mediaInput" accept="image/*,video/*">
-            </div>
-
-            <div class="filter-select-group">
-                <label for="filterSelect">Select Rare Aesthetic Filter Style:</label>
-                <select id="filterSelect">
-                    <option value="none">Normal (Original High Definition)</option>
-                    <option value="filter-rare-classic">✨ Rare Classic Vintage (Timeless Film Look)</option>
-                    <option value="filter-golden-cinema">🌅 Golden Cinema Era (Warm Retro Tone)</option>
-                    <option value="filter-noir-film">🎞️ Dramatic Noir Film (Monochrome Contrast)</option>
-                    <option value="filter-retro-dream">🔮 Retro Dreamscape (Artistic Hue Shift)</option>
-                </select>
-            </div>
-
-            <div class="preview-container" id="previewContainer">
+div class="preview-container" id="previewContainer">
                 <span style="color: #888; font-size: 13px; padding: 30px;">Media preview will appear here automatically</span>
             </div>
         </div>
@@ -458,6 +102,437 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERMIN - Ultimate Global Ecosystem & Social Hub</title>
+    <style>
+        :root {
+            --primary-blue: #1877f2;
+            --primary-gradient: linear-gradient(135deg, #6366f1, #a855f7, #ec4899);
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-main: #050505;
+            --text-secondary: #65676b;
+            --border-color: #ced0d4;
+            --admin-red: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        /* Top Sponsored Banner */
+        .top-ads-banner {
+            background: linear-gradient(90deg, #ff416c, #ff4b2b);
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        /* Header Navigation & Headings Menu */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 37px;
+            z-index: 1000;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            font-size: 24px;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: #e4e6eb;
+            padding: 6px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .app-container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card h2 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #1c1e21;
+        }
+
+        /* Hero Section */
+        .priority-hero {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
+        .priority-hero h1 {
+            font-size: 18px;
+            color: #38bdf8;
+            margin-top: 0;
+        }
+
+        .priority-hero p {
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        /* Account & Registration Form */
+        .auth-box input, .auth-box textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        /* Media Upload & Filters Studio */
+        .upload-area {
+            border: 2px dashed #dadde1;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            background: #fdfdfd;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        input[type="file"] { display: none; }
+
+        .upload-btn-label {
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .preview-container {
+            position: relative;
+            text-align: center;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .preview-container img, .preview-container video {
+            max-width: 100%;
+            max-height: 350px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Custom Filters (Professional, Classic & Funny/Meme Effects) */
+        .filter-normal { filter: none; }
+        .filter-pro-studio { filter: contrast(110%) brightness(105%) saturate(110%); }
+        .filter-classic-bw { filter: grayscale(100%) contrast(120%); }
+        .filter-funny-swirl { filter: hue-rotate(240deg) saturate(300%) contrast(150%); }
+        .filter-meme-deepfry { filter: contrast(300%) saturate(400%) brightness(90%); }
+        .filter-vintage-sepia { filter: sepia(90%) contrast(120%) brightness(95%); }
+
+        /* Gifting Grid System */
+        .gift-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .gift-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .gift-item:hover { background: #fdf2f8; border-color: #ec4899; transform: scale(1.03); }
+        .gift-emoji { font-size: 24px; display: block; }
+        .gift-name { font-size: 11px; font-weight: 700; color: #475569; }
+
+        .btn-action {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--primary-gradient);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            margin-top: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .admin-panel {
+            background: #fff5f5;
+            border: 1px dashed var(--admin-red);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Sponsored Ad Banner -->
+    <div class="top-ads-banner" onclick="alert('Sponsored Ad Partner Portal Opened Successfully!');">
+        🚀 Sponsored Ads Banner: Click here to explore verified partner opportunities!
+    </div>
+
+    <!-- Main Navigation Header with Direct Headings Links -->
+    <header>
+        <div class="logo-area">VERMIN</div>
+        <div class="nav-links">
+            <a href="#heroSec">🛡️ Security Hub</a>
+            <a href="#authSec">👤 Social Account</a>
+            <a href="#cameraSec">📸 Media & Filters</a>
+            <a href="#giftSec">🎁 Gifting Vault</a>
+            <a href="#adminSec">⚙️ Admin Control</a>
+        </div>
+    </header>
+
+    <div class="app-container">
+
+        <!-- 1. Security & Youth Empowerment Hub Section -->
+        <div class="priority-hero" id="heroSec">
+            <h1>🛡️ Security & Youth Empowerment Hub</h1>
+            <p>Welcome to VERMIN's centralized digital infrastructure core. Designed to ensure absolute security protocols, community safety, and youth empowerment capabilities all in one unified ecosystem.</p>
+        </div>
+
+        <!-- 2. Social Account Registration Section (Instagram/TikTok Style) -->
+        <div class="card" id="authSec">
+            <h2>👤 TikTok & Instagram Style Account Registration</h2>
+            <div class="auth-box">
+                <p style="font-size: 13px; color: var(--text-secondary);">Create your profile, set a secure password, upload your profile picture, and write your bio:</p>
+                <input type="text" id="fullNameInput" placeholder="Enter Full Name...">
+                <input type="text" id="usernameInput" placeholder="Enter Username (e.g., @vermin_user)...">
+                <input type="password" id="passwordInput" placeholder="Enter Secure Password...">
+                <textarea id="bioInput" rows="2" placeholder="Write a short bio about yourself..."></>
+                <button onclick="registerAccount()" class="btn-action">Create Social Account & Sign In ✨</button>
+            </div>
+        </div>
+
+        <!-- 3. Media Upload & Custom Filters Studio Section -->
+        <div class="card" id="cameraSec">
+            <h2>📸 Advanced Media Upload & Funny/Professional Filters Studio</h2>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px;">
+                Upload your photos or videos, select from professional studios, classic styles, or funny meme filters before publishing or broadcasting live.
+            </p>
+
+            <div class="upload-area" onclick="document.getElementById('mediaInput').click();">
+                <span style="font-size: 30px; display: block; margin-bottom: 5px;">📂</span>
+                <span class="upload-btn-label">Select Photo or Video File</span>
+                <input type="file" id="mediaInput" accept="image/*,video/*">
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="filterSelect" style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px;">Choose Filter Effect (Professional, Classic or Funny):</label>
+                <select id="filterSelect" style="width:100%; padding:10px; border-radius:6px; border:1px solid var(--border-color);">
+                    <option value="filter-normal">Normal (Original Media)</option>
+                    <option value="filter-pro-studio">✨ Pro Studio Enhance</option>
+                    <option value="filter-classic-bw">🎞️ Classic Black & White</option>
+                    <option value="filter-vintage-sepia">📜 Vintage Retro Sepia</option>
+                    <option value="filter-funny-swirl">🤪 Funny Neon Swirl (Comedy Effect)</option>
+                    <option value="filter-meme-deepfry">🔥 Meme Deep-Fried Effect</option>
+                </select>
+            </div>
+
+            <div class="preview-container" id="previewContainer">
+                <span style="color: #888; font-size: 13px;">Media preview and applied filter output will render here</span>
+            </div>
+
+            <button onclick="startLiveVideo()" class="btn-action" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); margin-top: 15px;">
+                🔴 Start Live Video Broadcast
+            </button>
+        </div>
+
+        <!-- 4. Live Gifting Vault Section -->
+        <div class="card" id="giftSec">
+            <h2>🎁 TikTok-Style Live Gifting Vault</h2>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">Send interactive virtual gifts to broadcasters during live streams:</p>
+            <div class="gift-grid">
+                <div class="gift-item" onclick="triggerGift('🌹 Rose')">
+                    <span class="gift-emoji">🌹</span>
+                    <span class="gift-name">Rose</span>
+                </div>
+                <div class="gift-item" onclick="triggerGift('💎 Diamond')">
+                    <span class="gift-emoji">💎</span>
+                    <span class="gift-name">Diamond</span>
+                </div>
+                <div class="gift-item" onclick="triggerGift('🚀 Rocket')">
+                    <span class="gift-emoji">🚀</span>
+                    <span class="gift-name">Rocket</span>
+                </div>
+                <div class="gift-item" onclick="triggerGift('👑 Trophy')">
+                    <span class="gift-emoji">👑</span>
+                    <span class="gift-name">Trophy</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Admin Control & Moderation Panel Section -->
+        <div class="card" id="adminSec">
+            <h2>⚙️ Admin Central Security & Moderation</h2>
+            <p style="font-size: 13px; color: var(--text-secondary);">Exclusive administrator controls to moderate violations, review flags, and safely remove rogue content or user accounts:</p>
+            <div class="admin-panel">
+                <input type="text" id="targetUser" placeholder="Enter target Username or User ID..." style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+                <button onclick="adminAction()" style="background:var(--admin-red); color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer;">🗑️ Remove User Account or Content</button>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2026 VERMIN Global Ecosystem. All rights reserved.
+    </footer>
+
+    <!-- Integrated JavaScript Engine -->
+    <script>
+        const mediaInput = document.getElementById('mediaInput');
+        const previewContainer = document.getElementById('previewContainer');
+        const filterSelect = document.getElementById('filterSelect');
+        let activeMedia = null;
+
+        mediaInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            previewContainer.innerHTML = '';
+            const fileURL = URL.createObjectURL(file);
+            const fileType = file.type;
+
+            if (fileType.startsWith('image/')) {
+                activeMedia = document.createElement('img');
+                activeMedia.src = fileURL;
+                previewContainer.appendChild(activeMedia);
+            } else if (fileType.startsWith('video/')) {
+                activeMedia = document.createElement('video');
+                activeMedia.src = fileURL;
+                activeMedia.controls = true;
+                previewContainer.appendChild(activeMedia);
+            }
+            applySelectedFilter();
+        });
+
+        filterSelect.addEventListener('change', applySelectedFilter);
+
+        function applySelectedFilter() {
+            if (!activeMedia) return;
+            const selectedFilter = filterSelect.value;
+            activeMedia.className = '';
+            if (selectedFilter !== 'filter-normal') {
+                activeMedia.classList.add(selectedFilter);
+            }
+        }
+
+        function registerAccount() {
+            const fullName = document.getElementById('fullNameInput').value;
+            const user = document.getElementById('usernameInput').value;
+            const pass = document.getElementById('passwordInput').value;
+            if(!fullName || !user || !pass) {
+                alert('Please fill in your Full Name, Username, and Password to create your account!');
+                return;
+            }
+            alert(`🎉 Welcome to VERMIN, ${fullName} (${user})! Your social account has been successfully created.`);
+        }
+
+        function startLiveVideo() {
+            alert('🔴 Live Video broadcast session initiated successfully! You are now live on VERMIN.');
+        }
+
+        function triggerGift(giftName) {
+            alert(`🎁 Success! You have sent a virtual (${giftName}) gift to the stream.`);
+        }
+
+        function adminAction() {
+            const target = document.getElementById('targetUser').value;
+            if(!target) {
+                alert('Please provide a valid username or ID to execute administrative moderation.');
+                return;
+            }
+            alert(`🛡️ Admin Action Confirmed: Target (${target}) has been successfully moderated/removed from VERMIN.`);
+        }
+    </script>
+</body>
+</html>
 
 
         
+
+            
