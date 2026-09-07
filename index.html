@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VERMIN - Ultimate Global Ecosystem & Social Hub</title>
+    
+    <!-- Standard PWA Manifest Link -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1877f2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <style>
         :root {
             --primary-blue: #1877f2;
@@ -14,6 +21,7 @@
             --text-secondary: #65676b;
             --border-color: #ced0d4;
             --admin-red: #ef4444;
+            --success-green: #10b981;
         }
 
         body {
@@ -139,6 +147,21 @@
             font-size: 14px;
         }
 
+        /* Wallet & Earnings Dashboard Box */
+        .wallet-box {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 1px solid #a7f3d0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .wallet-balance {
+            font-size: 20px;
+            font-weight: 900;
+            color: #047857;
+            margin: 5px 0 10px 0;
+        }
+
         /* Media Upload & Filters Studio */
         .upload-area {
             border: 2px dashed #dadde1;
@@ -181,15 +204,20 @@
             max-height: 350px;
             display: block;
             margin: 0 auto;
+            width: 100%;
+            object-fit: cover;
         }
 
-        /* Custom Filters (Professional, Classic & Funny/Meme Effects) */
+        /* Advanced Bandariya & Classic Filters Collection */
         .filter-normal { filter: none; }
-        .filter-pro-studio { filter: contrast(110%) brightness(105%) saturate(110%); }
-        .filter-classic-bw { filter: grayscale(100%) contrast(120%); }
-        .filter-funny-swirl { filter: hue-rotate(240deg) saturate(300%) contrast(150%); }
-        .filter-meme-deepfry { filter: contrast(300%) saturate(400%) brightness(90%); }
+        .filter-hollywood { filter: contrast(125%) brightness(105%) saturate(130%) drop-shadow(0 0 8px rgba(255,215,0,0.4)); }
+        .filter-cyberpunk { filter: hue-rotate(310deg) saturate(250%) contrast(140%) brightness(110%); }
+        .filter-gold-luxury { filter: sepia(40%) contrast(130%) brightness(115%) saturate(150%); }
+        .filter-moody-cinematic { filter: contrast(140%) brightness(85%) saturate(90%) sepia(20%); }
+        .filter-classic-bw { filter: grayscale(100%) contrast(135%) brightness(105%); }
         .filter-vintage-sepia { filter: sepia(90%) contrast(120%) brightness(95%); }
+        .filter-funny-swirl { filter: hue-rotate(240deg) saturate(350%) contrast(160%); }
+        .filter-meme-deepfry { filter: contrast(350%) saturate(450%) brightness(85%); }
 
         /* Gifting Grid System */
         .gift-grid {
@@ -247,48 +275,48 @@
 <body>
 
     <!-- Top Sponsored Ad Banner -->
-    <div class="top-ads-banner" onclick="alert('Sponsored Ad Partner Portal Opened Successfully!');">
-        🚀 Sponsored Ads Banner: Click here to explore verified partner opportunities!
+    <div class="top-ads-banner" onclick="alert('Sponsored Ad Partner Portal: Platform ad revenue supports global creator cashout payouts!');">
+        🚀 Sponsored Ads Banner: Click to explore global monetization partners!
     </div>
 
-    <!-- Main Navigation Header with Direct Headings Links -->
+    <!-- Main Navigation Header -->
     <header>
         <div class="logo-area">VERMIN</div>
         <div class="nav-links">
-            <a href="#heroSec">🛡️ Security Hub</a>
-            <a href="#authSec">👤 Social Account</a>
-            <a href="#cameraSec">📸 Media & Filters</a>
-            <a href="#giftSec">🎁 Gifting Vault</a>
-            <a href="#adminSec">⚙️ Admin Control</a>
+            <a href="#heroSec">🛡️ Security</a>
+            <a href="#authSec">👤 Social</a>
+            <a href="#cameraSec">📸 Pro Filters & Live</a>
+            <a href="#giftSec">🎁 Wallet & Gifts</a>
+            <a href="#adminSec">⚙️ Admin</a>
         </div>
     </header>
 
     <div class="app-container">
 
-        <!-- 1. Security & Youth Empowerment Hub Section -->
+        <!-- 1. Security & Global Ecosystem Hub Section -->
         <div class="priority-hero" id="heroSec">
-            <h1>🛡️ Security & Youth Empowerment Hub</h1>
-            <p>Welcome to VERMIN's centralized digital infrastructure core. Designed to ensure absolute security protocols, community safety, and youth empowerment capabilities all in one unified ecosystem.</p>
+            <h1>🛡️ VERMIN Global Ecosystem & Security Hub</h1>
+            <p>Designed for worldwide deployment, featuring absolute security protocols, youth empowerment, and high-end multimedia broadcasting tools.</p>
         </div>
 
-        <!-- 2. Social Account Registration Section (Instagram/TikTok Style) -->
+        <!-- 2. Social Account Registration Section -->
         <div class="card" id="authSec">
-            <h2>👤 TikTok & Instagram Style Account Registration</h2>
+            <h2>👤 TikTok & Instagram Style Global Account Registration</h2>
             <div class="auth-box">
-                <p style="font-size: 13px; color: var(--text-secondary);">Create your profile, set a secure password, upload your profile picture, and write your bio:</p>
+                <p style="font-size: 13px; color: var(--text-secondary);">Create your global profile, secure password, and bio:</p>
                 <input type="text" id="fullNameInput" placeholder="Enter Full Name...">
-                <input type="text" id="usernameInput" placeholder="Enter Username (e.g., @vermin_user)...">
+                <input type="text" id="usernameInput" placeholder="Enter Username (e.g., @vermin_global)...">
                 <input type="password" id="passwordInput" placeholder="Enter Secure Password...">
                 <textarea id="bioInput" rows="2" placeholder="Write a short bio about yourself..."></textarea>
-                <button onclick="registerAccount()" class="btn-action">Create Social Account & Sign In ✨</button>
+                <button onclick="registerAccount()" class="btn-action">Create Global Social Account & Sign In ✨</button>
             </div>
         </div>
 
-        <!-- 3. Media Upload & Custom Filters Studio Section -->
+        <!-- 3. Advanced Bandariya & Classic Filters + Live Camera Studio Section -->
         <div class="card" id="cameraSec">
-            <h2>📸 Advanced Media Upload & Funny/Professional Filters Studio</h2>
+            <h2>📸 Advanced Bandariya & Classic Studio Filters + Live Camera</h2>
             <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px;">
-                Upload your photos or videos, select from professional studios, classic styles, or funny meme filters before publishing or broadcasting live.
+                Choose from our massive collection of high-end bandariya, cinematic, classic, and comedy filters for your uploads or real-time live video streams!
             </p>
 
             <div class="upload-area" onclick="document.getElementById('mediaInput').click();">
@@ -298,64 +326,81 @@
             </div>
 
             <div style="margin-bottom: 15px;">
-                <label for="filterSelect" style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px;">Choose Filter Effect (Professional, Classic or Funny):</label>
-                <select id="filterSelect" style="width:100%; padding:10px; border-radius:6px; border:1px solid var(--border-color);">
+                <label for="filterSelect" style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 5px;">Choose Bandariya / Classic Filter Effect:</label>
+                <select id="filterSelect" style="width:100%; padding:10px; border-radius:6px; border:1px solid var(--border-color); font-weight: 600; color: #1e293b;">
                     <option value="filter-normal">Normal (Original Media)</option>
-                    <option value="filter-pro-studio">✨ Pro Studio Enhance</option>
-                    <option value="filter-classic-bw">🎞️ Classic Black & White</option>
+                    <option value="filter-hollywood">🌟 Hollywood Cinematic Bandariya</option>
+                    <option value="filter-cyberpunk">⚡ Cyberpunk Neon Glow</option>
+                    <option value="filter-gold-luxury">👑 Gold Luxury High-Class</option>
+                    <option value="filter-moody-cinematic">🎬 Moody Cinematic Pro</option>
+                    <option value="filter-classic-bw">🎞️ Classic High-Contrast B&W</option>
                     <option value="filter-vintage-sepia">📜 Vintage Retro Sepia</option>
-                    <option value="filter-funny-swirl">🤪 Funny Neon Swirl (Comedy Effect)</option>
+                    <option value="filter-funny-swirl">🤪 Funny Neon Swirl Comedy</option>
                     <option value="filter-meme-deepfry">🔥 Meme Deep-Fried Effect</option>
                 </select>
             </div>
 
             <div class="preview-container" id="previewContainer">
-                <span style="color: #888; font-size: 13px;">Media preview and applied filter output will render here</span>
+                <span style="color: #888; font-size: 13px;">Media preview and real-time live hardware camera stream will render here</span>
             </div>
 
-            <button onclick="startLiveVideo()" class="btn-action" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); margin-top: 15px;">
-                🔴 Start Live Video Broadcast
+            <button onclick="startRealLiveVideo()" class="btn-action" style="background: linear-gradient(135deg, #ec4899, #8b5cf6); margin-top: 15px;">
+                🔴 Start Real Live Hardware Camera Stream 🎥
             </button>
         </div>
 
-        <!-- 4. Live Gifting Vault Section -->
+        <!-- 4. TikTok-Style Gifting & Cash Wallet Section -->
         <div class="card" id="giftSec">
-            <h2>🎁 TikTok-Style Live Gifting Vault</h2>
-            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">Send interactive virtual gifts to broadcasters during live streams:</p>
+            <h2>🎁 TikTok-Style Live Gifting & Cash Wallet</h2>
+            
+            <!-- Wallet Balance Display -->
+            <div class="wallet-box">
+                <div style="font-size: 12px; font-weight: 700; color: #065f46; text-transform: uppercase;">💰 Global Creator Cash Earnings Wallet</div>
+                <div class="wallet-balance" id="walletDisplay">$0.00 (₦0.00)</div>
+                <p style="font-size: 12px; color: #047857; margin: 0 0 10px 0;">
+                    Virtual gifts sent during live broadcasts instantly convert to real currency backed by platform treasury funds!
+                </p>
+                <button onclick="requestPayout()" style="background: #10b981; color: white; border: none; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer;">
+                    💸 Withdraw Earnings & Cashout
+                </button>
+            </div>
+
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">Tap a gift to test sending and watch your wallet cash grow globally:</p>
             <div class="gift-grid">
-                <div class="gift-item" onclick="triggerGift('🌹 Rose')">
+                <div class="gift-item" onclick="triggerGift('🌹 Rose', 0.50, 400)">
                     <span class="gift-emoji">🌹</span>
-                    <span class="gift-name">Rose</span>
+                    <span class="gift-name">Rose ($0.50)</span>
                 </div>
-                <div class="gift-item" onclick="triggerGift('💎 Diamond')">
+                <div class="gift-item" onclick="triggerGift('💎 Diamond', 2.00, 1600)">
                     <span class="gift-emoji">💎</span>
-                    <span class="gift-name">Diamond</span>
+                    <span class="gift-name">Diamond ($2.00)</span>
                 </div>
-                <div class="gift-item" onclick="triggerGift('🚀 Rocket')">
+                <div class="gift-item" onclick="triggerGift('🚀 Rocket', 5.00, 4000)">
                     <span class="gift-emoji">🚀</span>
-                    <span class="gift-name">Rocket</span>
+                    <span class="gift-name">Rocket ($5.00)</span>
                 </div>
-                <div class="gift-item" onclick="triggerGift('👑 Trophy')">
+                <div class="gift-item" onclick="triggerGift('👑 Trophy', 10.00, 8000)">
                     <span class="gift-emoji">👑</span>
-                    <span class="gift-name">Trophy</span>
+                    <span class="gift-name">Trophy ($10.00)</span>
                 </div>
             </div>
         </div>
 
         <!-- 5. Admin Control & Moderation Panel Section -->
         <div class="card" id="adminSec">
-            <h2>⚙️ Admin Central Security & Moderation</h2>
-            <p style="font-size: 13px; color: var(--text-secondary);">Exclusive administrator controls to moderate violations, review flags, and safely remove rogue content or user accounts:</p>
+            <h2>⚙️ Admin Central Security & Global Treasury</h2>
+            <p style="font-size: 13px; color: var(--text-secondary);">Manage global user accounts, moderate violations, and approve treasury payouts:</p>
             <div class="admin-panel">
                 <input type="text" id="targetUser" placeholder="Enter target Username or User ID..." style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-                <button onclick="adminAction()" style="background:var(--admin-red); color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer;">🗑️ Remove User Account or Content</button>
+                <button onclick="adminAction()" style="background:var(--admin-red); color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer; margin-bottom: 10px;">🗑️ Remove User Account or Content</button>
+                <button onclick="adminApprovePayouts()" style="background:var(--success-green); color:white; border:none; padding:10px; border-radius:6px; font-weight:bold; width:100%; cursor:pointer;">✅ Global Treasury: Approve Creator Payouts</button>
             </div>
         </div>
 
     </div>
 
     <footer>
-        &copy; 2026 VERMIN Global Ecosystem. All rights reserved.
+        &copy; 2026 VERMIN Global Ecosystem. All rights reserved. Worldwide Standard PWA Powered.
     </footer>
 
     <!-- Integrated JavaScript Engine -->
@@ -364,8 +409,17 @@
         const previewContainer = document.getElementById('previewContainer');
         const filterSelect = document.getElementById('filterSelect');
         let activeMedia = null;
+        let activeStream = null;
+
+        let totalUSD = 0.00;
+        let totalNGN = 0.00;
+
+        function updateWalletDisplay() {
+            document.getElementById('walletDisplay').innerText = `$${totalUSD.toFixed(2)} (₦${totalNGN.toLocaleString()})`;
+        }
 
         mediaInput.addEventListener('change', function(event) {
+            stopCameraStream();
             const file = event.target.files[0];
             if (!file) return;
 
@@ -397,6 +451,32 @@
             }
         }
 
+        async function startRealLiveVideo() {
+            stopCameraStream();
+            previewContainer.innerHTML = '';
+            
+            try {
+                activeStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                activeMedia = document.createElement('video');
+                activeMedia.srcObject = activeStream;
+                activeMedia.autoplay = true;
+                activeMedia.playsInline = true;
+                previewContainer.appendChild(activeMedia);
+                
+                applySelectedFilter();
+                alert('🔴 Live Video Camera Stream Successfully Started Worldwide! Hardware camera is active.');
+            } catch (error) {
+                alert('⚠️ Camera access denied or not supported on this device/browser. Please check permissions.');
+            }
+        }
+
+        function stopCameraStream() {
+            if (activeStream) {
+                activeStream.getTracks().forEach(track => track.stop());
+                activeStream = null;
+            }
+        }
+
         function registerAccount() {
             const fullName = document.getElementById('fullNameInput').value;
             const user = document.getElementById('usernameInput').value;
@@ -405,24 +485,41 @@
                 alert('Please fill in your Full Name, Username, and Password to create your account!');
                 return;
             }
-            alert(`🎉 Welcome to VERMIN, ${fullName} (${user})! Your social account has been successfully created.`);
+            alert(`🎉 Welcome to VERMIN Global Ecosystem, ${fullName} (${user})! Your global account and cash wallet are active.`);
         }
 
-        function startLiveVideo() {
-            alert('🔴 Live Video broadcast session initiated successfully! You are now live on VERMIN.');
+        function triggerGift(giftName, usdValue, ngnValue) {
+            totalUSD += usdValue;
+            totalNGN += ngnValue;
+            updateWalletDisplay();
+            alert(`🎁 Success! You received a ${giftName}! Converted to your global cash wallet ($${usdValue.toFixed(2)} / ₦${ngnValue.toLocaleString()}).`);
         }
 
-        function triggerGift(giftName) {
-            alert(`🎁 Success! You have sent a virtual (${giftName}) gift to the stream.`);
+        function requestPayout() {
+            if (totalUSD <= 0) {
+                alert('⚠️ Your wallet balance is $0.00. Receive virtual gifts during live streams to accumulate earnings!');
+                return;
+            }
+            alert(`💸 Global Payout Request Submitted Successfully!\n\nWithdrawal request for $${totalUSD.toFixed(2)} (₦${totalNGN.toLocaleString()}) is queued for worldwide bank transfer via VERMIN Treasury.`);
         }
 
         function adminAction() {
             const target = document.getElementById('targetUser').value;
             if(!target) {
-                alert('Please provide a valid username or ID to execute administrative moderation.');
+                alert('Please provide a valid username or ID to execute global moderation.');
                 return;
             }
-            alert(`🛡️ Admin Action Confirmed: Target (${target}) has been successfully moderated/removed from VERMIN.`);
+            alert(`🛡️ Admin Action Confirmed: Target (${target}) has been successfully removed from VERMIN Global.`);
+        }
+
+        function adminApprovePayouts() {
+            alert(`✅ Global Treasury Confirmed: All pending creator payouts have been successfully approved and disbursed worldwide!`);
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => console.log('SW registration failed', err));
+            });
         }
     </script>
 </body>
